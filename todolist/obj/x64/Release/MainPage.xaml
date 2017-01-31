@@ -1,0 +1,56 @@
+﻿ <Page
+    x:Class="todolist.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:todolist"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:src="clr-namespace:todolist"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="70"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0" Text="TodoList" Margin="30, 20, 30, 10" FontSize="25"/>
+
+        <TextBox x:ConnectionId='1' Name="m_txtBoxLineEdit" Text="" Grid.Row="1" Height="35" Margin="10, 0, 10, 0"/>
+        
+        <ListBox x:ConnectionId='2' Grid.Row="2" Name="m_ListBox" Margin="10, 5, 10, 5">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <ContentControl x:ConnectionId='3'                     >
+                        <StackPanel Orientation="Horizontal">
+                            <CheckBox IsChecked="{Binding isChecked, Mode=TwoWay}"/>
+                            <TextBlock Padding="5, 0, 5, 0" Text="{Binding name}"/>
+                            <TextBlock Padding="5, 0, 5, 0" Text="{Binding fullDateDisplay}"/>
+                            <TextBlock Padding="5, 0, 5, 0" Text="{Binding isDoneString}"/>
+                        </StackPanel>
+                    </ContentControl>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </Grid>
+
+    <Page.BottomAppBar>
+        <CommandBar Foreground="Blue" Background="White">
+            <AppBarButton x:ConnectionId='4' Content="Setting" Icon="Setting" Label="Settings"                        />
+            <AppBarButton x:ConnectionId='5' Content="Delete" Icon="Delete" Label="Delete all"                      />
+            <AppBarButton x:ConnectionId='6' Content="SelectAll" Icon="SelectAll" Label="Select all"                         />
+            <AppBarButton x:ConnectionId='7' Content="Edit" Icon="Edit" Label="Edit"                    />
+            <AppBarButton x:ConnectionId='8' Content="Remove" Icon="Remove" Label="Remove"                       />
+            <AppBarButton x:ConnectionId='9' Content="Add" Icon="Add" Label="Add"                   />
+        </CommandBar>
+    </Page.BottomAppBar>
+
+</Page>
+
